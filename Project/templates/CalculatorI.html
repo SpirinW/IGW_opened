@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Калькулятор информатика</title>
+	<title>Калькулятор Информатика</title>
 </head>
 <style type="text/css"
 	>	p{
@@ -13,20 +13,21 @@
 	        {
 	            var json=JSON.stringify({
 	            				's' : document.nsl.s.value,
-								
+								// чтобы сделать несколько переменных отдельно здесь прописывать каждую
 											'n' : 	document.nsl.n.value
 							});
 							var xhr = new XMLHttpRequest();
+							//блять Владос ты ебанутый. Вот тут где sumbit1 Url с обработчиками
 							xhr.open("POST", '/submit1', true);
 							xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
 							xhr.send(json);
-							
+							//<-- Вот сюда напиши штуку, которая добавляет значок загрузки-->
 							xhr.onreadystatechange = function()
         			{
 								if (xhr.readyState==4 && xhr.status==200)
 								{
-							
+							//вместо алерта удаление значка загрузки и вывод ответа
 						 	var resp = JSON.parse(xhr.responseText);
 							alert(resp['res']);
 							}
@@ -34,8 +35,6 @@
 	        }
 </script>
 <body background="/static/img/bg.svg">
-	<script>
-	    </script>1
 	</head>
 	<body>
 	<h1>Решение(2 параметра)<br>
@@ -44,12 +43,11 @@
 	Пример: <br>1 форма: 123(2) + 123(2)<br>2 форма: 8<br>
 	Результат: 26<br>
 	Также можно перевести число из одной системы счисления в другую<br>
-	Пример :<br>1 форма:101010(2) = 10<br>2 форма: 1<br>Результат: 42</h1>
+	Пример :<br>1 форма:101010(2) = 10<br>2 форма: 1</h1>
 	<form name="nsl">
 		<input type="text" name="s">
 		<input type="text" name="n">
 		<input type="button" value="Посчитать" onClick="Solve();">
-		<input type="button" value="Сброс">
 	</form>
 
 	</body>
