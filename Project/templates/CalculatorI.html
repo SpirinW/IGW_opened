@@ -13,21 +13,17 @@
 	        {
 	            var json=JSON.stringify({
 	            				's' : document.nsl.s.value,
-								// чтобы сделать несколько переменных отдельно здесь прописывать каждую
 											'n' : 	document.nsl.n.value
 							});
 							var xhr = new XMLHttpRequest();
-							//блять Владос ты ебанутый. Вот тут где sumbit1 Url с обработчиками
 							xhr.open("POST", '/submit1', true);
 							xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
 							xhr.send(json);
-							//<-- Вот сюда напиши штуку, которая добавляет значок загрузки-->
 							xhr.onreadystatechange = function()
         			{
 								if (xhr.readyState==4 && xhr.status==200)
 								{
-							//вместо алерта удаление значка загрузки и вывод ответа
 						 	var resp = JSON.parse(xhr.responseText);
 							alert(resp['res']);
 							}
